@@ -6,6 +6,7 @@
 package Facades;
 
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -13,8 +14,8 @@ import javax.persistence.Persistence;
  *
  * @author jarmo
  */
-public class PersonFacadeImp implements PersonFacade {
-    
+public class PersonFacadeImp implements IPersonFacade {
+
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
     
     
@@ -23,7 +24,10 @@ public class PersonFacadeImp implements PersonFacade {
         this.emf = emf;
         }
     
-    
+    public EntityManager getEntityManager() 
+    {
+        return emf.createEntityManager();
+    }
     
     public PersonFacadeImp getPersonsInCity(String city, int zipCode) {
         
@@ -31,20 +35,41 @@ public class PersonFacadeImp implements PersonFacade {
         return null;
     }
     
-    public List<PersonFacadeImp> getPersons() {
-    
-        
-        
-        return null;
+    @Override
+    public void addEntityManagerFactory(EntityManagerFactory emf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person addPerson(Person p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person deletePerson(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person getPerson(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Person> getPersons() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person editPerson(Person p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public PersonFacadeImp getPersonWithNumber(String pNumber) {
-    return null;
-    }
     
-    public PersonFacadeImp getPersonsWithHobby(String hobby) {
-    return null;
-    }
+    
+//    
+    
+    
     
     
     
