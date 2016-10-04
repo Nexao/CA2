@@ -61,7 +61,14 @@ public class CompanyFacadeImp implements ICompanyFacade {
 
     @Override
     public Company getCompany(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("select Company c from Company where id = ?");
+            Company company = query.getSingleResult();
+            return company;
+        } finally {
+            em.close();
+        }
     }
 
     @Override
