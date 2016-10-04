@@ -42,10 +42,20 @@ public class InfoService {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * PUT method for updating or creating an instance of InfoService
-     * @param content representation for the resource
-     */
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("contactinfo")
+//    public String getContactInfo() {
+//        //Person p1 = new Person();
+//        //InfoEntity ie1 = new InfoEntity();
+//        //AddressInfo ai1 = new AddressInfo();
+//        
+//        Object ob1 = new Object();
+//        
+//        ob1 = p1.getPersons()
+//        return null;
+//    }
+    
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     public void putXml(String content) {
