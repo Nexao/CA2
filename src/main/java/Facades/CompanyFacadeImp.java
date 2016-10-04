@@ -7,8 +7,10 @@ package Facades;
 
 import entity.Company;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -23,9 +25,33 @@ public class CompanyFacadeImp implements ICompanyFacade {
         this.emf = emf;
     }
 
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
     @Override
     public Company addCompany(Company c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(c);
+            em.getTransaction().commit();
+            return c;
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Company> getCompany() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("select c from Company c");
+            List<Company> company = query.getResultList();
+            return company;
+        } finally {
+            em.close();
+        }
     }
 
     @Override
@@ -35,11 +61,6 @@ public class CompanyFacadeImp implements ICompanyFacade {
 
     @Override
     public Company getCompany(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Company> getCompany() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
