@@ -30,7 +30,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Infoentity.findAll", query = "SELECT i FROM Infoentity i"),
     @NamedQuery(name = "Infoentity.findById", query = "SELECT i FROM Infoentity i WHERE i.id = :id"),
-    @NamedQuery(name = "Infoentity.findByEmail", query = "SELECT i FROM Infoentity i WHERE i.email = :email")})
+    @NamedQuery(name = "Infoentity.findByEmail", query = "SELECT i FROM Infoentity i WHERE i.email = :email"),
+    @NamedQuery(name = "Infoentity.findByPhone_Number", query = "SELECT i FROM Infoentity i WHERE i.phonenumber = :phonenumber")})
 public class Infoentity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +44,7 @@ public class Infoentity implements Serializable {
     @Size(max = 45)
     @Column(name = "Email")
     private String email;
-    @JoinColumn(name = "Phone_Number", referencedColumnName = "Number")
-    @ManyToOne(optional = false)
+    @Column(name = "Phone_Number")
     private Phone phoneNumber;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "infoEntityId")
     private Collection<Address> addressCollection;
@@ -112,5 +112,5 @@ public class Infoentity implements Serializable {
     public String toString() {
         return "entity.Infoentity[ id=" + id + " ]";
     }
-    
+
 }

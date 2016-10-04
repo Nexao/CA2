@@ -63,8 +63,7 @@ public class CompanyFacadeImp implements ICompanyFacade {
     public Company getCompany(int id) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("select Company c from Company where id = ?");
-            Company company = query.getSingleResult();
+            Company company = em.find(Company.class, id);        
             return company;
         } finally {
             em.close();
