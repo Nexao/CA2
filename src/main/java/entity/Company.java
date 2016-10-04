@@ -29,25 +29,24 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Company.findByCvr", query = "SELECT c FROM Company c WHERE c.cvr = :cvr"),
     @NamedQuery(name = "Company.findByNumEmployees", query = "SELECT c FROM Company c WHERE c.numEmployees = :numEmployees"),
     @NamedQuery(name = "Company.findByMarketValue", query = "SELECT c FROM Company c WHERE c.marketValue = :marketValue")})
-public class Company implements Serializable {
+public class Company extends InfoEntity {
 
-    private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
+    
     @Size(max = 45)
     @Column(name = "description")
     private String description;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
+    
     @Column(name = "cvr")
     private String cvr;
+    
     @Column(name = "NumEmployees")
     private Integer numEmployees;
+    
     @Column(name = "marketValue")
     private Integer marketValue;
 

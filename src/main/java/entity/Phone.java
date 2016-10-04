@@ -42,7 +42,7 @@ public class Phone implements Serializable {
     @Column(name = "Description")
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "phoneNumber")
-    private Collection<Infoentity> infoentityCollection;
+    private Collection<InfoEntity> infoentityCollection;
 
     public Phone() {
     }
@@ -67,11 +67,11 @@ public class Phone implements Serializable {
         this.description = description;
     }
 
-    public Collection<Infoentity> getInfoentityCollection() {
+    public Collection<InfoEntity> getInfoentityCollection() {
         return infoentityCollection;
     }
 
-    public void setInfoentityCollection(Collection<Infoentity> infoentityCollection) {
+    public void setInfoentityCollection(Collection<InfoEntity> infoentityCollection) {
         this.infoentityCollection = infoentityCollection;
     }
 

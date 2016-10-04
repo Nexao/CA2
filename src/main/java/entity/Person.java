@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Person.findByDescription", query = "SELECT p FROM Person p WHERE p.hobbyName = :hobbyName"),
     @NamedQuery(name = "Person.findByDescription", query = "SELECT p FROM Person p WHERE p.hobbyDescription = :hobbyDescription"),
 })
-public class Person extends Infoentity {
+public class Person extends InfoEntity {
 
     @Size(max = 45)
     @Column(name = "FirstName")
